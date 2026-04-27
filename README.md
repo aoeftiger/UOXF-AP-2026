@@ -10,7 +10,7 @@ This repository provides the jupyter notebook resources for each lecture.
 
 The rendered HTML slides of the notebooks are found here:
 
-- [lecture 1](https://aoeftiger.github.io/UOXF-AP-2026/lecture-1/lecture.slides.html)
+- [lecture 1](https://aoeftiger.github.io/UOXF-AP-2026/lecture1/lecture.slides.html)
 - lecture 2
 - lecture 3
 - lecture 4
