@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v2.1)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v3.0)
 
 # Accelerator Physics
 
@@ -27,7 +27,7 @@ Run these notebook talks online, interactively, either via the local Physics Jup
 
 or on mybinder.org:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v2.1)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v3.0)
 
 ---
 
