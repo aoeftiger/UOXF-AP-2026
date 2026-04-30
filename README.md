@@ -12,7 +12,7 @@ The rendered HTML slides of the notebooks are found here:
 
 - [lecture 1](https://aoeftiger.github.io/UOXF-AP-2026/lecture1/lecture.slides.html)
 - [lecture 2](https://aoeftiger.github.io/UOXF-AP-2026/lecture2/lecture.slides.html)
-- lecture 3
+- [lecture 3](https://aoeftiger.github.io/UOXF-AP-2026/lecture3/lecture.slides.html)
 - lecture 4
 - lecture 5
 - lecture 6
