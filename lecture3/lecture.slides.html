@@ -7488,14 +7488,10 @@ via the public mybinder.org service: <br/>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">config</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">plt</span><span class="p">,</span> <span class="n">plot_rfwave</span><span class="p">,</span> <span class="n">tqdm</span><span class="p">,</span> <span class="n">trange</span><span class="p">,</span> <span class="p">)</span>
-<span class="c1">#                     beta, gamma, Machine, track_one_turn,</span>
-<span class="c1">#                     charge, mass, emittance, hamiltonian, </span>
-<span class="c1">#                     plot_hamiltonian, plot_rf_overview,</span>
-<span class="c1">#                     plot_dist, plot_mp)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">m_p</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -8084,102 +8080,75 @@ c) Same as b) but for high energies with $\gamma &gt; \gamma_\text{t}$.</li>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=20e33892">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bac35bd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">charge</span> <span class="o">=</span> <span class="n">e</span>
-<span class="n">mass</span> <span class="o">=</span> <span class="n">m_p</span>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<!--charge = e
+mass = m_p
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Machine</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">gamma_ref</span> <span class="o">=</span> <span class="mf">3.13</span>
-    <span class="n">circumference</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="mf">200e3</span>
-    <span class="n">harmonic</span> <span class="o">=</span> <span class="mi">7</span>
-    <span class="n">alpha_c</span> <span class="o">=</span> <span class="mf">0.027</span>
-    <span class="n">phi_s</span> <span class="o">=</span> <span class="mf">0.456</span>
+class Machine(object):
+    gamma_ref = 3.13
+    circumference = 2 * np.pi * 100
+    voltage = 200e3
+    harmonic = 7
+    alpha_c = 0.027
+    phi_s = 0.456
     
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma_ref</span><span class="o">=</span><span class="n">gamma_ref</span><span class="p">,</span> <span class="n">circumference</span><span class="o">=</span><span class="n">circumference</span><span class="p">,</span>
-                 <span class="n">voltage</span><span class="o">=</span><span class="n">voltage</span><span class="p">,</span> <span class="n">harmonic</span><span class="o">=</span><span class="n">harmonic</span><span class="p">,</span> 
-                 <span class="n">alpha_c</span><span class="o">=</span><span class="n">alpha_c</span><span class="p">,</span> <span class="n">phi_s</span><span class="o">=</span><span class="n">phi_s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">'''Override default settings by giving explicit arguments.'''</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_ref</span> <span class="o">=</span> <span class="n">gamma_ref</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">circumference</span> <span class="o">=</span> <span class="n">circumference</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">voltage</span> <span class="o">=</span> <span class="n">voltage</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">harmonic</span> <span class="o">=</span> <span class="n">harmonic</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">alpha_c</span> <span class="o">=</span> <span class="n">alpha_c</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">phi_s</span> <span class="o">=</span> <span class="n">phi_s</span>
+    def __init__(self, gamma_ref=gamma_ref, circumference=circumference,
+                 voltage=voltage, harmonic=harmonic, 
+                 alpha_c=alpha_c, phi_s=phi_s):
+        '''Override default settings by giving explicit arguments.'''
+        self.gamma_ref = gamma_ref
+        self.circumference = circumference
+        self.voltage = voltage
+        self.harmonic = harmonic
+        self.alpha_c = alpha_c
+        self.phi_s = phi_s
     
-    <span class="k">def</span><span class="w"> </span><span class="nf">eta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltap</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">'''Phase-slip factor for a particle.'''</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="p">()</span> <span class="o">+</span> <span class="n">deltap</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha_c</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span>
+    def eta(self, deltap):
+        '''Phase-slip factor for a particle.'''
+        p = self.p0() + deltap
+        return self.alpha_c - gamma(p)**-2
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">p0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">'''Momentum of synchronous particle.'''</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_ref</span> <span class="o">*</span> <span class="n">beta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma_ref</span><span class="p">)</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">c</span>
+    def p0(self):
+        '''Momentum of synchronous particle.'''
+        return self.gamma_ref * beta(self.gamma_ref) * mass * c
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">update_gamma_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">'''Advance the energy of the synchronous particle</span>
-<span class="sd">        according to the synchronous phase by one turn.</span>
-<span class="sd">        '''</span>
-        <span class="n">deltap_per_turn</span> <span class="o">=</span> <span class="n">charge</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">voltage</span> <span class="o">/</span> <span class="p">(</span>
-            <span class="n">beta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma_ref</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phi_s</span><span class="p">)</span>
-        <span class="n">new_p0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="p">()</span> <span class="o">+</span> <span class="n">deltap_per_turn</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_ref</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">(</span><span class="n">new_p0</span><span class="p">)</span>
-</pre></div>
+    def update_gamma_ref(self):
+        '''Advance the energy of the synchronous particle
+        according to the synchronous phase by one turn.
+        '''
+        deltap_per_turn = charge * self.voltage / (
+            beta(self.gamma_ref) * c) * np.sin(self.phi_s)
+        new_p0 = self.p0() + deltap_per_turn
+        self.gamma_ref = gamma(new_p0)-->
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> charge = e
-<span class="ansi-green-fg">      2</span> mass = m_p
-<span class="ansi-green-fg">      3</span> 
-<span class="ansi-green-fg">      4</span> <span class="ansi-bold" style="color: rgb(0,135,0)">class</span> Machine(object):
-
-<span class="ansi-red-fg">NameError</span>: name 'e' is not defined</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=46b3c0ff">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0e5f541">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">track_one_turn</span><span class="p">(</span><span class="n">z_n</span><span class="p">,</span> <span class="n">deltap_n</span><span class="p">,</span> <span class="n">machine</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">machine</span>
-    <span class="c1"># half drift</span>
-    <span class="n">z_nhalf</span> <span class="o">=</span> <span class="n">z_n</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">eta</span><span class="p">(</span><span class="n">deltap_n</span><span class="p">)</span> <span class="o">*</span> <span class="n">deltap_n</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">p0</span><span class="p">()</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">circumference</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="c1"># rf kick</span>
-    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">charge</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">voltage</span> <span class="o">/</span> <span class="p">(</span><span class="n">beta</span><span class="p">(</span><span class="n">gamma</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">p0</span><span class="p">()))</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">phi_s</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">harmonic</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">z_nhalf</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">circumference</span>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<!--def track_one_turn(z_n, deltap_n, machine):
+    m = machine
+    # half drift
+    z_nhalf = z_n - m.eta(deltap_n) * deltap_n / m.p0() * m.circumference / 2
+    # rf kick
+    amplitude = charge * m.voltage / (beta(gamma(m.p0())) * c)
+    phi = m.phi_s - m.harmonic * 2 * np.pi * z_nhalf / m.circumference
     
-    <span class="n">m</span><span class="o">.</span><span class="n">update_gamma_ref</span><span class="p">()</span>
-    <span class="n">deltap_n1</span> <span class="o">=</span> <span class="n">deltap_n</span> <span class="o">+</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">phi_s</span><span class="p">))</span>
-    <span class="c1"># half drift</span>
-    <span class="n">z_n1</span> <span class="o">=</span> <span class="n">z_nhalf</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">eta</span><span class="p">(</span><span class="n">deltap_n1</span><span class="p">)</span> <span class="o">*</span> <span class="n">deltap_n1</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">p0</span><span class="p">()</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">circumference</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="n">z_n1</span><span class="p">,</span> <span class="n">deltap_n1</span>
-</pre></div>
-</div>
+    m.update_gamma_ref()
+    deltap_n1 = deltap_n + amplitude * (np.sin(phi) - np.sin(m.phi_s))
+    # half drift
+    z_n1 = z_nhalf - m.eta(deltap_n1) * deltap_n1 / m.p0() * m.circumference / 2
+    return z_n1, deltap_n1-->
 </div>
 </div>
 </div>
