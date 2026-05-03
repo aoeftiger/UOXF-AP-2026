@@ -217,7 +217,7 @@ def plot_rf_overview(machine):
     plt.scatter([z_ufp], [0], marker='*', c='white', edgecolor='red', zorder=10)
     plt.scatter([0], [0], marker='d', c='white', edgecolor='purple')
     plt.xlabel('$z$ [m]')
-    plt.ylabel('$\delta$')
+    plt.ylabel(r'$\delta$')
     plt.subplots_adjust(hspace=0)
     
     return fig, ax
