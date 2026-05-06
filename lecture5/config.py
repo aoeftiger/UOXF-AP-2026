@@ -64,3 +64,25 @@ def track_sext_4D(x, xp, y, yp, mL):
     xp += 0.5 * mL * (y * y - x * x)
     yp += mL * x * y
     return x, xp, y, yp
+
+def plot_twiss(twiss, what='beamline'):
+    plt.plot(twiss['s'], twiss['betx'], label=r'$\beta_x$ [m]')
+    plt.plot(twiss['s'], twiss['bety'], label=r'$\beta_y$ [m]')
+    plt.plot(twiss['s'], twiss['alfx'], label=r'$\alpha_x$ [1]', c='C0', ls='--')
+    plt.plot(twiss['s'], twiss['alfy'], label=r'$\alpha_y$ [1]', c='C1', ls='--')
+    
+    ylim = plt.ylim()
+    if what == 'beamline':
+        plt.fill_betweenx(ylim, 3-0.3, 3+0.3, color='red', alpha=0.2)
+        plt.fill_betweenx(ylim, 7-0.2, 7+0.2, color='red', alpha=0.2)
+        plt.fill_betweenx(ylim, 5-0.3, 5+0.3, color='black', alpha=0.2)
+    elif what == 'lhc':
+        plt.fill_betweenx(ylim, 0, 3.3/2, color='red', alpha=0.2)
+        plt.fill_betweenx(ylim, 110/2 - 3.3/2, 110/2 + 3.3/2, color='blue', alpha=0.2)
+        plt.fill_betweenx(ylim, 110 - 3.3/2, 110, color='red', alpha=0.2)
+    plt.ylim(ylim)
+    
+    plt.xlabel('$s$ [m]')
+    plt.ylabel(r'$\beta_{x,y}$ and $\alpha_{x,y}$')
+    plt.legend(loc='upper left', bbox_to_anchor=(1.05, 1));
+

@@ -17,10 +17,11 @@ dependencies:
   - pip
   - pip:
     - tqdm==4.66.1
-    - PyNAFF==1.1.7
+    #- PyNAFF==1.1.7
+    - git+https://github.com/nkarast/PyNAFF/@v.1.1.8
     - cpymad ==1.19.0 --only-binary cpymad #==1.14.2
-    - pysixtrack ==0.0.6
-    - scikit-image==0.19.3
+    #- pysixtrack ==0.0.6
+    #- scikit-image==0.19.3
     - pillow==9.2.0
     - prettytable==3.6.0
-    - stable_baselines3==2.2.1
+    #- stable_baselines3==2.2.1
