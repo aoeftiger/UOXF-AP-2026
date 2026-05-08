@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v5.1)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v6.0)
 
 # Accelerator Physics
 
@@ -15,7 +15,7 @@ The rendered HTML slides of the notebooks are found here:
 - [lecture 3](https://aoeftiger.github.io/UOXF-AP-2026/lecture3/lecture.slides.html)
 - [lecture 4](https://aoeftiger.github.io/UOXF-AP-2026/lecture4/lecture.slides.html)
 - [lecture 5](https://aoeftiger.github.io/UOXF-AP-2026/lecture5/lecture.slides.html)
-- lecture 6
+- [lecture 6](https://aoeftiger.github.io/UOXF-AP-2026/lecture6/lecture.slides.html)
 
 ---
 
@@ -27,7 +27,7 @@ Run these notebook talks online, interactively, either via the local Physics Jup
 
 or on mybinder.org:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v5.1)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v6.0)
 
 ---
 
