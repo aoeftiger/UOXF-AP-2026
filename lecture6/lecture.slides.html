@@ -7460,8 +7460,12 @@ main {
 <h2>Run this notebook online!</h2>
 <p>Interact and run this jupyter notebook online:</p>
 <div class="alert alert-block alert-info" style="text-align:center;">
+via the local Physics Jupyterlab service: <br/>
+<a href="https://jupyterlab.physics.ox.ac.uk" style="width:auto; display:table;margin:0.5em auto;"><img alt="physics department logo" src="https://shields.io/badge/JupyterLab-Department%20of%20Physics-F37626?logo=jupyter" style="height: 1.3em;"/></a>
+</div>
+<div class="alert alert-block alert-info" style="text-align:center;">
 via the public mybinder.org service: <br/>
-<a href="https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v1.0" style="width:auto; display:table;margin:0.5em auto;"><img alt="mybinder.org logo" height="1ex" src="./img/binder_logo.svg"/></a>
+<a href="https://mybinder.org/v2/gh/aoeftiger/UOXF-AP-2026/v6.1" style="width:auto; display:table;margin:0.5em auto;"><img alt="mybinder.org logo" src="./img/binder_logo.svg" style="height: 1.3em;"/></a>
 </div>
 <p>Also find this lecture rendered <a href="https://aoeftiger.github.io/UOXF-AP-2026/">as HTML slides on github $\nearrow$</a> along with the <a href="https://github.com/aoeftiger/UOXF-AP-2026">source repository $\nearrow$</a>.</p>
 </div>
@@ -7509,6 +7513,7 @@ via the public mybinder.org service: <br/>
 <ol>
 <li>Hill Differential Equation &amp; Floquet Theory</li>
 <li>Twiss Parametrisation and Optics</li>
+<li>The FODO Cell</li>
 </ol>
 </div>
 </div>
@@ -7522,17 +7527,16 @@ via the public mybinder.org service: <br/>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 style="color: #b51f2a">Today!</h2>
 <ol>
-<li>The FODO Cell</li>
 <li>Off-momentum Particles: Dispersion &amp; Chromaticity</li>
 <li>Synchrotron Radiation</li>
 </ol>
-<ul>
-<li>synchrotron radiation power loss</li>
-<li>FCCee</li>
-<li>light sources</li>
-<li>FEL, XFEL</li>
-<li>BSRT in LHC --&gt; detectors</li>
-</ul>
+<!--
+- synchrotron radiation power loss
+- FCCee
+- light sources
+- FEL, XFEL
+- BSRT in LHC detectors
+-->
 <!--research happening at JAI: advanced acceleration technologies (plasma accelerators), intense and high-energy beam physics, medical accelerators, beam diagnostics-->
 </div>
 </div>
@@ -7550,7 +7554,7 @@ via the public mybinder.org service: <br/>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07a0b4ea">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7559,7 +7563,7 @@ via the public mybinder.org service: <br/>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2>Off-momentum Trajectory</h2>
 <p><img alt="Dispersive orbit in dipole magnet" src="./img/dispersive_orbit_in_dipole.png" style="float:right; width:20%; margin-left: 1em;"/></p>
-<p>Particles with a momentum $p\neq p_0$ different from the reference momentum $p_0$ are bent by magnetic fields  $B$ on a different bending radius $\rho$:</p>
+<p>Particles with a momentum $p\neq p_0$ different from reference momentum $p_0$ are bent by magnetic fields  $B$ on a different bending radius $\rho$:</p>
 <p>$$B\rho=\cfrac{p}{|q|}$$</p>
 <p>In particular, higher-momentum particles are bent less, and their off-momentum trajectory encompasses two major effects:</p>
 <ol>
@@ -7582,7 +7586,7 @@ image by <a href="https://people.nscl.msu.edu/~haoy/teaching/fundamental_AP/tran
 <p><img alt="Sketch showing dispersion effect on closed orbit" src="./img/dispersion.png" style="width:25%; float: right; margin: 1em;"/></p>
 <p>Since dipole magnets define the reference orbit (cf. Frenet-Serret coordinate system), off-momentum particles will experience a different "dispersive" closed orbit – dipoles are said to "generate" dispersion.</p>
 <p>The dispersion function $D(s)$ describes the local equilibrium offset from the reference closed orbit due to a momentum deviation $\delta=\Delta p/p_0$ with respect to the synchronous reference particle:</p>
-<p>$$x_\text{disp}(s) = D_x(s) \cdot \delta$$</p>
+<p>$$x(s)=\underbrace{x_\beta}\limits_{\mathop{=}\sqrt{2J_x\beta_x(s)}\cos(\psi_x(s))} + x_\text{disp}\qquad\text{with}\qquad x_\text{disp}(s) = D_x(s) \cdot \delta$$</p>
 <p>$D_x(s)$ hence represents the (horizontal) closed orbit for a particle with $\delta=1$, i.e. twice the reference momentum.</p>
 <p style="clear: both; font-size: 10pt; text-align: right; float: right;">image by <a href="https://e-publishing.cern.ch/index.php/CYRSP/article/view/1586/1315">A. Lasheen / JUAS</a></p>
 </div>
@@ -7650,7 +7654,7 @@ image by <a href="https://people.nscl.msu.edu/~haoy/teaching/fundamental_AP/tran
 
 <span class="n">twiss</span> <span class="o">=</span> <span class="n">madx</span><span class="o">.</span><span class="n">twiss</span><span class="p">();</span>
 <span class="n">qx_fodo</span> <span class="o">=</span> <span class="n">twiss</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">'q1'</span><span class="p">]</span>
-<span class="n">qpx_fodo</span> <span class="o">=</span> <span class="n">twiss</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">'dq1'</span><span class="p">]</span> <span class="c1"># multiplied by beta, which is ~1</span>
+<span class="n">qpx_fodo</span> <span class="o">=</span> <span class="n">twiss</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">'dq1'</span><span class="p">]</span> <span class="c1"># multiplied by beta~1</span>
 </pre></div>
 </div>
 </div>
@@ -7668,7 +7672,7 @@ image by <a href="https://people.nscl.msu.edu/~haoy/teaching/fundamental_AP/tran
   +     MAD-X 5.09.03  (64 bit, Darwin)      +
   + Support: mad@cern.ch, http://cern.ch/mad +
   + Release   date: 2024.04.25               +
-  + Execution date: 2026.05.08 07:17:52      +
+  + Execution date: 2026.05.08 11:22:59      +
   ++++++++++++++++++++++++++++++++++++++++++++
 enter Twiss module
   
@@ -7705,6 +7709,39 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1dd6fcc5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">madx</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">'value, beam-&gt;beta;'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>beam-&gt;beta         =        0.999999991 ;
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>True</pre>
+</div>
+</div>
+</div>
+</div>
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=373d9762">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7721,7 +7758,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">madx</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">'theta := 2 * pi / 1232;'</span><span class="p">);</span>
@@ -7759,7 +7796,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">twiss</span> <span class="o">=</span> <span class="n">madx</span><span class="o">.</span><span class="n">twiss</span><span class="p">();</span>
@@ -7817,41 +7854,8 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The dispersion function $D(s)$ satisfies the inhomogeneous Hill differential equation</p>
+<p>Given that $D=\cfrac{x}{\delta}$ for the equilibrium orbit at a momentum deviation $\delta$, the dispersion function $D(s)$ satisfies the inhomogeneous Hill differential equation</p>
 <p>$$D'' + \left(\frac{1}{\rho_0(s)} + k(s)\right)\cdot D = \frac{1}{\rho_0(s)}$$</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d95ce5c5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">madx</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">'value, beam-&gt;beta;'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>beam-&gt;beta         =        0.999999991 ;
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>True</pre>
-</div>
 </div>
 </div>
 </div>
@@ -7863,7 +7867,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">twiss</span><span class="p">[</span><span class="s1">'s'</span><span class="p">],</span> <span class="n">twiss</span><span class="p">[</span><span class="s1">'dx'</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.999999991</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">twiss</span><span class="p">[</span><span class="s1">'s'</span><span class="p">],</span> <span class="n">twiss</span><span class="p">[</span><span class="s1">'dx'</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.999999991</span><span class="p">)</span> <span class="c1"># multiplied by beta~1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'$s$ [m]'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$D_x(s)$ [m]'</span><span class="p">);</span>
 </pre></div>
@@ -7890,7 +7894,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>$\implies$ Dispersion function $D(s)$ is focused by the quadrupoles in a similar way as the horizontal $\beta_x(s)$-function!</p>
+<p>$\implies$ Dispersion function $D(s)$ is focused by the quadrupoles, analogous to the horizontal $\beta_x(s)$-function!</p>
 </div>
 </div>
 </div>
@@ -7912,28 +7916,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Simulation-2:-Dispersion-Effect-in-Tracking">Simulation 2: Dispersion Effect in Tracking<a class="anchor-link" href="#Simulation-2:-Dispersion-Effect-in-Tracking">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a090c96">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To illustrate the dispersion effect, we use the thin-lens tracking code <code>PySixTrack</code> (like our thin-lens betatron matrices but for 6D, i.e. including the momentum deviation $\delta$)!</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3968953f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Simulation-2:-Dispersion-Effect-in-Tracking">Simulation 2: Dispersion Effect in Tracking<a class="anchor-link" href="#Simulation-2:-Dispersion-Effect-in-Tracking">¶</a></h3><p>To illustrate the dispersion effect, we use the thin-lens tracking code <code>PySixTrack</code> (like our thin-lens betatron matrices but for 6D, i.e. including the momentum deviation $\delta$)!</p>
 <p>We define a drift of $5\,$m length and a dipole with a bending angle of $0.1\,$rad:</p>
 </div>
 </div>
@@ -8065,7 +8048,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=319fb07b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8073,8 +8056,8 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2>Chromaticity</h2>
-<p>Chromaticity describes the change of focusing for off-momentum particles at $p=p_0(1+\delta)$.</p>
-<p>The chromatic abberation of a quadrupole focusing lens with gradient $\frac{\partial B_y}{\partial x}$ yields:</p>
+<p>Chromaticity describes the change of focusing for off-momentum particles at $p=p_0(1+\delta)$. <br/>
+The chromatic aberration of a quadrupole focusing lens with gradient $\frac{\partial B_y}{\partial x}$ yields:</p>
 <p>$$k \equiv \cfrac{1}{B\rho}\cfrac{\partial B_y}{\partial x} \propto \cfrac{1}{p}\implies k(\delta)=\cfrac{k}{1+\delta}$$</p>
 <p>Therefore, quadrupoles focus less for higher-momentum particles $\delta&gt;0$ and thus the tune $Q$ decreases. The chromaticity of an accelerator is defined as</p>
 <p>$$Q'=\frac{dQ}{d\delta}$$</p>
@@ -8325,7 +8308,7 @@ orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3bacae8f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9114,7 +9097,7 @@ makethin: slicing sequence : fodo
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Go about with the tracking again:</p>
+<p>Going on with particle tracking:</p>
 </div>
 </div>
 </div>
@@ -9335,7 +9318,7 @@ makethin: slicing sequence : fodo
 <p>Moving charged particle source $=$ time-varying charge and current density $\implies$ Maxwell equations and wave equation to find EM fields $\implies$ frequency distribution of radiation and critical frequency $\omega_c$ (median of spectrum)</p>
 <p><img alt="Photon spectrum" src="./img/spectrum-wiggler.png" style="width:25%; float: right; margin: 1em;"/></p>
 <p>$$\omega_c=\cfrac{3}{2}\cfrac{c}{\rho}\gamma^3$$</p>
-<p>$\implies$ Integrating over spectrum yields total radiated power (at $\beta\approx 1$):</p>
+<p>$\implies$ Integrating over spectrum yields total radiated power <!--(at $\beta\approx 1$):--></p>
 <p>$$P_\gamma = \cfrac{e^2c}{6\pi\epsilon_0}\cfrac{\gamma^4}{\rho^2}$$</p>
 <ul>
 <li>decreasing bending radius $\rho$ (more bending!) increases critical frequency and power</li>
@@ -9359,6 +9342,7 @@ makethin: slicing sequence : fodo
 <img alt="Insertion device synchrotron light principle" src="./img/insertion-device.webp" style="width: 30%; float: left; margin: 1em;">
 <p style="clear:both;"></p>
 </img></img></div>
+<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://doi.org/10.1007/978-3-319-43866-5_3">T. Uruga</a></p>
 <p>Advantage of insertion devices:</p>
 <ul>
 <li>alternating permanent magnets force electrons onto sinusoidal trajectories</li>
@@ -9366,7 +9350,6 @@ makethin: slicing sequence : fodo
 <li>wigglers: stronger deflection, broad spectrum</li>
 <li>undulators: weaker deflection, waves interfere constructively, almost mono-chromatic <strong>coherent</strong> synchrotron light</li>
 </ul>
-<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://doi.org/10.1007/978-3-319-43866-5_3">T. Uruga</a></p>
 </div>
 </div>
 </div>
@@ -9379,6 +9362,7 @@ makethin: slicing sequence : fodo
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2>Synchrotron Radiation Facilities</h2>
 <p><img alt="Storage Ring based Light Source principle" src="./img/lightsource-schematic.webp" style="width:30%; float:right; margin: 1em;"/></p>
+<p style="clear: both; font-size: 10pt; text-align: right; float: right;">image by <a href="https://doi.org/10.1007/978-3-319-43866-5_3">T. Uruga</a></p>
 <p><img alt="Linac-based Light Source principle" src="./img/linac-srsource.jpg" style="width: 30%; float:right; clear:both; margin: 1em;"/></p>
 <p>Two categories of synchrotron radiation facilities:</p>
 <ol>
@@ -9386,7 +9370,6 @@ makethin: slicing sequence : fodo
 <li>Linac-based sources</li>
 </ol>
 <p>$\implies$ Free Electron Lasers: <br/>photon beam intensity $I\propto N_e^2$ instead of $I\propto N_e$ for conventional sources</p>
-<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://doi.org/10.1007/978-3-319-43866-5_3">T. Uruga</a></p>
 </div>
 </div>
 </div>
@@ -9399,12 +9382,28 @@ makethin: slicing sequence : fodo
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2>Future Circular lepton Collider FCC-ee</h2>
 <p><img alt="FCC-ee footprint" src="./img/fcc-footprint.png" style="width:30%; float:right; margin: 1em auto;"/></p>
+<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://home.cern/science/accelerators/future-circular-collider/">CERN</a></p>
 <p>On the high-energy physics front: <br/>next-generation facility for <strong>high-precision</strong> experiments</p>
 <p>$\implies$ Higgs factory to study properties of Higgs <br/>(discovered at LHC in 2012)</p>
 <p>Collide leptons (electrons and positrons) for clean initial state during collision, much smaller background compared to proton colliders $\implies$ precision measurements!</p>
 <p><em>European Particle Physics Strategy Update</em> 2026: consider 91 km long FCC-ee proposal as top priority</p>
 <p>$\implies$ Key issue of circular high-energy lepton colliders: <strong>synchrotron radiation</strong> (50 MW / beam!)</p>
-<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://home.cern/science/accelerators/future-circular-collider/">CERN</a></p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=77dd4c81">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2>Synchrotron Radiation for Beam Size Detectors</h2>
+<p><img alt="Beam Size measurement with BSRT" src="./img/bsrt-meas.png" style="width: 20%; float:right; margin: 1em;"/></p>
+<p>LHC employs BSRT system: Beam Synchrotron Radiation Telescope</p>
+<p><img alt="BRST schematic" src="./img/bsrt.png" style="width: 60%; margin: 1em auto;"/></p>
+<p style="clear: both; font-size: 10pt; text-align: right; float: right;">images by <a href="https://indico.cern.ch/event/287930/contributions/660535/attachments/536481/739568/Wendt_LHC_SyncLightMonitor.pdf">F. Caspers</a></p>
+<p>$\implies$ At TeV level, protons do provide enough synchrotron radiation to be "seen"!</p>
 </div>
 </div>
 </div>
@@ -9430,7 +9429,7 @@ makethin: slicing sequence : fodo
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2866ddb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
